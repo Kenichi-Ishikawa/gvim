@@ -4,7 +4,7 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-" neobundle.vimの初期化 
+" neobundle.vimの初期化
 " NeoBundleを更新するための設定
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -94,6 +94,10 @@ if ! empty(neobundle#get("SrcExpl"))
   " Source Explorer Window Height
   let g:SrcExpl_winHeight = 14
   " Mappings
+  " トグル用のショートカットは<Leader>E<CR>に。
+  " <Leader>Euで現ファイルのタグをアップデート。
+  " <Leader>Eaで全てのファイルのタグをアップデート。
+  " <Leader>En/pはその関数が複数の場所で定義されてる時などに 次の候補や前の候補への移動。
   nn [srce] <Nop>
   nm <Leader>E [srce]
   nn <silent> [srce]<CR> :SrcExplToggle<CR>
@@ -126,7 +130,7 @@ NeoBundle 'Shougo/vimproc.vim'
 
 " 補完機能
 NeoBundle 'Shougo/neocomplcache'
-	"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -258,6 +262,10 @@ NeoBundle 'scrooloose/syntastic'
 "let g:syntastic_check_on_wq = 0
 
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+
+
+
+
 
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、ファイルタイプ別プラグイン/インデントを有効化する
