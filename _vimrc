@@ -261,9 +261,8 @@ NeoBundle 'scrooloose/syntastic'
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
 
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-
-
+"let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_checkers = ['php', 'phpmd']
 
 
 
@@ -274,19 +273,18 @@ filetype plugin indent on
 " インストールのチェック
 NeoBundleCheck
 
-
 " .un~ファイルは不要
 " http://www.kaoriya.net/blog/2014/03/30/
 :set noundofile
 
-
 " tabスペースを4個分
 set tabstop=4
-
 
 " 行番号を表示
  set number
 
-
 " バックアップファイルを作成しない
 :set nobackup
+
+" Vimの内部文字コードする(encoding)
+set encoding=utf-8
