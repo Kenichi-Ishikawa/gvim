@@ -24,55 +24,19 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 let g:indent_guides_enable_on_vim_startup = 1
 
-" vim-trailing-whitespaceで行末の不要な半角スペースを可視化
-" 行末の半角スペースを可視化
-"NeoBundle 'bronson/vim-trailing-whitespace'
-" Vimで行末の余分なスペースを取り除く
-autocmd BufWritePre * :%s/\s\+$//ge
-
-" 全角スペースの可視化
-" http://inari.hatenablog.com/entry/2014/05/05/231307
-""""""""""""""""""""""""""""""
-" 全角スペースの表示
-""""""""""""""""""""""""""""""
-function! ZenkakuSpace()
-    highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
-endfunction
-
-if has('syntax')
-    augroup ZenkakuSpace
-        autocmd!
-        autocmd ColorScheme * call ZenkakuSpace()
-        autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
-    augroup END
-    call ZenkakuSpace()
-endif
-""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""
-" 最後のカーソル位置を復元する
-""""""""""""""""""""""""""""""
-if has("autocmd")
-    autocmd BufReadPost *
-    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-    \   exe "normal! g'\"" |
-    \ endif
-endif
-""""""""""""""""""""""""""""""
-
 
 " VimをIDEっぽく(主にC++/Java用)整える
 " http://rcmdnk.github.io/blog/2014/07/25/computer-vim/#tagbar-srcexpl-nerdtree
 " タグのリスト表示
 " :TagbarToggleでタグリストを新しいウィンドウで表示/非表示。
-NeoBundleLazy "majutsushi/tagbar", {
-      \ "autoload": { "commands": ["TagbarToggle"] }}
-if ! empty(neobundle#get("tagbar"))
-   " Width (default 40)
-  let g:tagbar_width = 20
-  " Map for toggle
-  nn <silent> <leader>t :TagbarToggle<CR>
-endif
+"NeoBundleLazy "majutsushi/tagbar", {
+"      \ "autoload": { "commands": ["TagbarToggle"] }}
+"if ! empty(neobundle#get("tagbar"))
+"   " Width (default 40)
+"  let g:tagbar_width = 20
+"  " Map for toggle
+"  nn <silent> <leader>t :TagbarToggle<CR>
+"endif
 
 " 関数等の定義場所のソース表示
 " :SrcExplToggleで表示/非表示をトグル。
@@ -84,12 +48,12 @@ if ! empty(neobundle#get("SrcExpl"))
   " Is update tags when SrcExpl is opened
   let g:SrcExpl_isUpdateTags = 0
   " Tag update command
-  let g:SrcExpl_updateTagsCmd = 'ctags --sort=foldcase %'
+  let g:SrcExpl_updateTagsCmd = 'ctags --languages=PHP %'
   " Update all tags
   function! g:SrcExpl_UpdateAllTags()
-    let g:SrcExpl_updateTagsCmd = 'ctags --sort=foldcase -R .'
+    let g:SrcExpl_updateTagsCmd = 'ctags --languages=PHP -R .'
     call g:SrcExpl_UpdateTags()
-    let g:SrcExpl_updateTagsCmd = 'ctags --sort=foldcase %'
+    let g:SrcExpl_updateTagsCmd = 'ctags --languages=PHP %'
   endfunction
   " Source Explorer Window Height
   let g:SrcExpl_winHeight = 14
@@ -117,9 +81,13 @@ endif
 
 " Tagbar, SrcExpl, NERDTreeを全て表示する
 " <Leader>Aで全てをトグル。 それぞれの位置はデフォルトのママ
+"if ! empty(neobundle#get("nerdtree")) &&
+"    \! empty(neobundle#get("SrcExpl")) &&
+"    \! empty(neobundle#get("tagbar"))
+"  nn <silent> <Leader>A :SrcExplToggle<CR>:NERDTreeToggle<CR>:TagbarToggle<CR>
+"endif
 if ! empty(neobundle#get("nerdtree")) &&
-    \! empty(neobundle#get("SrcExpl")) &&
-    \! empty(neobundle#get("tagbar"))
+    \! empty(neobundle#get("SrcExpl"))
   nn <silent> <Leader>A :SrcExplToggle<CR>:NERDTreeToggle<CR>:TagbarToggle<CR>
 endif
 
@@ -281,10 +249,10 @@ NeoBundleCheck
 set tabstop=4
 
 " 行番号を表示
- set number
+set number
 
 " バックアップファイルを作成しない
 :set nobackup
 
 " Vimの内部文字コードする(encoding)
-set encoding=utf-8
+set encoding=utf-8set encoding=utf-8
