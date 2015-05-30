@@ -88,7 +88,7 @@ endif
 "endif
 if ! empty(neobundle#get("nerdtree")) &&
     \! empty(neobundle#get("SrcExpl"))
-  nn <silent> <Leader>A :SrcExplToggle<CR>:NERDTreeToggle<CR>:TagbarToggle<CR>
+  nn <silent> <Leader>A :SrcExplToggle<CR>:NERDTreeToggle<CR>
 endif
 
 
