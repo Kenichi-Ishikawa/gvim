@@ -1,9 +1,11 @@
 colorscheme molokai
 
+" フォントを設定
 " フォント名に日本語名を使うので、一時的に文字コードを変える
-set encoding=cp932
+" set encoding=cp932
 set guifont=ProggyCleanTTSZBP:h12
-set guifontwide=Osaka－等幅:h9
+" set guifont=Osaka－等幅:h11
+set guifontwide=Osaka－等幅:h10
 set ambiwidth=double
 " 文字コードを元に戻す
-set encoding=utf8
+" set encoding=utf-8
