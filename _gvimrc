@@ -1,3 +1,9 @@
 colorscheme molokai
 
-
+" フォント名に日本語名を使うので、一時的に文字コードを変える
+set encoding=cp932
+set guifont=ProggyCleanTTSZBP:h12
+set guifontwide=Osaka－等幅:h9
+set ambiwidth=double
+" 文字コードを元に戻す
+set encoding=utf8
